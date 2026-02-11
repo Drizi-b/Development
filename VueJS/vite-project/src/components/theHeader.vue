@@ -3,7 +3,7 @@
     <h1>Header</h1>
 
     <div v-for="(item, index) in menu" :key="item.id" class="itens-menu">
-      <img :src="item.imgsrc" alt="Imagem do item" />
+      <img :src="item.imgsrc" :class="{img: true, 'img-home': isHome }" alt="Imagem do item" />
       <a href="item.link">{{ index }} - {{ item.title }}</a>
     </div>
   </header>
@@ -15,6 +15,8 @@ export default {
 
   data() {
     return {
+      classVar: "img",
+      isHome: true,
       menu: [
         {
           id: 1,
@@ -53,9 +55,15 @@ img {
   background-color: crimson;
   color: white;
   border-radius: 50%;
-  padding: 2rem;
+  padding: 4rem;
+  padding-bottom: 6rem;
+  border: 10px solid white;
   box-shadow: white 0px 0px 10px;
   height: 300px;
   width: 300px;
+}
+.the-header .itens-menu:first-of-type .img-home { /*para acatar a config apenas na primeira imagem*/
+  border: 5px solid rgb(78, 3, 3);
+  box-shadow: 0px 0px 15px rgb(78, 3, 3);
 }
 </style>
