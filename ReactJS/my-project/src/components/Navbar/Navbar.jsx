@@ -2,9 +2,8 @@ import React from "react";
 import logoImg from "../../assets/images/flight.png";
 import "./styles.css";
 
-export class Navbar extends React.Component {
-  render() {
-    return (
+export function Navbar() {
+      return (
       <header>
         <nav id="navbar">
           <div className="nav-brand">
@@ -29,4 +28,4 @@ export class Navbar extends React.Component {
       </header>
     );
   }
-}
+

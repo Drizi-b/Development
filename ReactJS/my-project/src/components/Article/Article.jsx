@@ -2,17 +2,16 @@
  
  import './styles.css';
 
- export class Article extends React.Component {
-    render() {
+ export function Article(props) {
+   console.log(props)
         return (
           <article id="article">
-            <img src={this.props.thumbnail} alt={this.props.title} />
+            <img src={props.thumbnail} alt={props.title} />
             <div className="article-infos">
-              <h2>{this.props.title}</h2>
-              <h3>{this.props.provider}</h3>
-              <p>{this.props.description}</p>
+              <h2>{props.title}</h2>
+              <h3>{props.provider}</h3>
+              <p>{props.description}</p>
             </div>
           </article>
         );
     }
-}
