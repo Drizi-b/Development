@@ -13,7 +13,8 @@
     color: #8695a4;
     margin-bottom: 1rem;
 }
-#articles article thumbnail {
+#article img {
     width: 80px;
     height: 80px;
+    border-radius: 5px;
 }

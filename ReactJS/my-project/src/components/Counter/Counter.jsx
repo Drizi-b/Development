@@ -1,55 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export class Counter extends React.Component {
+export function Counter () {
+  const [contador, setContador] = useState(0); //estado do contador que inicia em zero
 
-    constructor() {
-        super();
-        // this.contador = 0;
-        this.state = {
-            contador: 0, name: '', password: ''
-        };
-    }
-    render() {
         return (
           <div>
-            <h1>{this.state.contador}</h1>
+            <h1>{contador}</h1>
             <div>
               <button
                 onClick={() => {
-                  this.setState({ contador: this.state.contador - 1 });
+                  setContador(contador - 1)
                 }}
               >
                 Diminuir
               </button>
               <button
                 onClick={() => {
-                  this.setState({ contador: this.state.contador + 1 });
+                  setContador(contador + 1);
                 }}
               >
                 Aumentar
               </button>
 
-            </div>
-            <form>
-                <input 
-                type="text" 
-                placeholder="Nome" 
-                value={this.state.name} 
-                onChange={(event) => {
-                  this.setState({ name: event.target.value });
-                }}
-                />
-                <input 
-                type="password" 
-                placeholder="Senha" 
-                value={this.state.password} 
-                onChange={(event) => {
-                  this.setState({ password: event.target.value });
-                }}
-                />
-                <button>Enviar</button>
-            </form>
+            </div>            
           </div>
         );
     }
-}

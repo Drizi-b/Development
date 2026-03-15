@@ -1,52 +1,45 @@
-import React from 'react';
-import { Navbar } from './components/Navbar/Navbar';
-import { Article } from './components/Article/Article';
-// import { Counter } from './components/Counter/Counter';
-import './styles/App.css';
-// import articleImg1 from './assets/images/article1.png';
-// import articleImg2 from './assets/images/article2.png';
-// import articleImg3 from './assets/images/article3.png';
+import React, { useEffect, useState } from "react";
+import { Article } from "./components/Article/Article";
+import { Navbar } from "./components/Navbar/Navbar";
+import axios from "axios";
+
+import "./styles/App.css";
+
 // Componente em classe é uma classe que herda a classe Component do React, e retorna HTML dentro do método render().
-// Componente funcional é uma funçaõ que retorna HTML
-class App extends React.Component {
+// Componente funcional é uma função que retorna HTML
+function App() {
+  const [news, setNews] = useState([]);
+
+  useEffect(() => {
+    async function loadNews() {
+      const response = await axios.get(
+        "https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=8a14c6d698837b88ba91a9c07263e9d5",
+      );
+      const newsData = response.data;
+      setNews(newsData);
+    }
+    loadNews();
+  }, []);
   //Método responsável por renderizar o conteúdo HTML do nosso componente.
-  render() {
-    return (
-      <>
-    
-        {/* <Navbar /> */}
-        {/* <Counter /> */}
-        
-        {/* <section id="articles">
-          <Article
-            title="Designing Dashboards"
-            provider="NASA"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil qui hic fuga fugit placeat, cupiditate harum laborum tempore modi odit expedita reprehenderit, quos quaerat repudiandae sint distinctio! Error, odit porro."
-            thumbnail={articleImg1}
+  return (
+    <>
+      <Navbar />
+
+      <section id="articles">
+        {news.map((article) => {
+          return (
+            <Article
+              key={article.id}
+              title={article.title}
+              provider={article.url}
+              description={article.description}
+              thumbnail={article.image}
             />
-          <Article
-            title="Vibrant Portraits of 2020"
-            provider="SpaceNews"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt veritatis minus dolor laborum vel rerum nihil unde quas vero quo rem odio nesciunt nisi atque omnis, veniam quibusdam, consectetur delectus?."
-            thumbnail={articleImg2}
-            />
-          <Article
-            title="36 Days of Malayalam type"
-            provider="Spaceflight Now"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil qui hic fuga fugit placeat, cupiditate harum laborum tempore modi odit expedita reprehenderit, quos quaerat repudiandae sint distinctio! Error, odit porro."
-            thumbnail={articleImg3}
-            />
-          <Article
-            title="Designing Dashboards"
-            provider="NASA"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil qui hic fuga fugit placeat, cupiditate harum laborum tempore modi odit expedita reprehenderit, quos quaerat repudiandae sint distinctio! Error, odit porro."
-            thumbnail={articleImg1}
-            />
-        </section> */}
-      
-      </>
-    );
-  }
+          );
+        })}
+      </section>
+    </>
+  );
 }
 
 export default App;
