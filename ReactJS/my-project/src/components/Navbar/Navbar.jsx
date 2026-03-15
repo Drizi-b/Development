@@ -8,7 +8,7 @@ export function Navbar() {
         <nav id="navbar">
           <div className="nav-brand">
             <img src={logoImg} alt="Logo" />
-            <h1>Space Flight News</h1>
+            <h1>World News</h1>
           </div>
           <ul className="nav-list">
             <li>

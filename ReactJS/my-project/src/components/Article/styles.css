@@ -3,18 +3,21 @@
     gap: 1rem;
 }
 #article .article-infos h2 {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 12px;
 }
 #article .article-infos h3 {
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 10px;
+    font-weight: 180;
     color: #8695a4;
     margin-bottom: 1rem;
 }
+#article .article-infos p {
+    font-size: 15px;
+}
 #article img {
-    width: 80px;
-    height: 80px;
+    width: 180px;
+    height: 180px;
     border-radius: 5px;
 }
