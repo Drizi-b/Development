@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     async function loadNews() {
       const response = await axios.get(
-        "https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey=8a14c6d698837b88ba91a9c07263e9d5",
+        "https://gnews.io/api/v4/search?q=Google&lang=en&max=5&apikey=8a14c6d698837b88ba91a9c07263e9d5",
       );
       const newsData = response.data;
       setNews(newsData);
